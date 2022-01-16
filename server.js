@@ -17,7 +17,10 @@ app.get('/', (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket.id);
+  console.log(socket.id + ' has connected!');
+  socket.on('msg', (msg) => {
+    console.log(msg);
+  });
 });
 
 httpServer.listen(3000);
